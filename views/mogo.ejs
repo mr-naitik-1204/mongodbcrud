@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/createdata" method="post">
+
+        f_Name: <input type="text" name="f_name" value=""><br><br>
+        l_name: <input type="text" name="l_name" value=""><br><br>
+        male: <input type="radio" name="gender" value="male"  >
+        female: <input type="radio" name="gender" value="female"  ><br><br>
+
+        hobby: 
+        <input type="checkbox" name="hobby" value="cricket" > cricket
+        <input type="checkbox" name="hobby" value="hoky" > hocky
+        <input type="checkbox" name="hobby" value="footbol"> footbol
+        <input type="checkbox" name="hobby" value="kabadi" > kabadi
+        <input type="checkbox" name="hobby" value="kusti" > kusti
+        <input type="checkbox" name="hobby" value="driving" > driving <br><br>
+
+        <select id="dropdown1" name="city">
+            <option value="surat">surat</option>
+            <option value="ahemdabad">ahemdabad</option>
+            <option value="vadodra" >vadodra</option>
+            <option value="bhavnagar" >bhavnagar</option>
+            <option value="rajkot" >rajkot</option>
+            <option value="mumbai" >mumbai</option>
+        </select>
+
+        <button type="submit">submit</button>
+    </form>
+
+
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>f_name</td>
+            <td>l_name</td>
+            <td>gender</td>
+            <td>hobby</td>
+            <td>citty</td>
+            <td>Actions</td>
+        </tr>
+        <% data.map((item) => { %>
+            <tr>
+                <td><%= item.id %></td>
+                <td><%= item.f_name %></td>
+                <td><%= item.l_name %></td>
+                <td><%= item.gender %></td>
+                <td><%= item.hobby %></td>
+                <td><%=item.city%></td>
+               
+            </tr>
+        <% }) %>
+    </table>
+
+</body>
+</html>
