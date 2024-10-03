@@ -8,31 +8,30 @@
 <body>
     <form action="/createdata" method="post">
 
-        f_Name: <input type="text" name="f_name" value=""><br><br>
-        l_name: <input type="text" name="l_name" value=""><br><br>
-        male: <input type="radio" name="gender" value="male"  >
-        female: <input type="radio" name="gender" value="female"  ><br><br>
+        f_Name: <input type="text" name="f_name" value="<%= (editdata) ? editdata.f_name : '' %>"><br><br>
+        l_name: <input type="text" name="l_name" value="<%= (editdata) ? editdata.l_name : '' %>"><br><br>
+        male: <input type="radio" name="gender" value="male" <%= (editdata && editdata.gender === 'male') ? 'checked' : '' %> >
+        female: <input type="radio" name="gender" value="female" <%= (editdata && editdata.gender === 'female') ? 'checked' : '' %> ><br><br>
 
         hobby: 
-        <input type="checkbox" name="hobby" value="cricket" > cricket
-        <input type="checkbox" name="hobby" value="hoky" > hocky
-        <input type="checkbox" name="hobby" value="footbol"> footbol
-        <input type="checkbox" name="hobby" value="kabadi" > kabadi
-        <input type="checkbox" name="hobby" value="kusti" > kusti
-        <input type="checkbox" name="hobby" value="driving" > driving <br><br>
+        <input type="checkbox" name="hobby" value="cricket" <%= (editdata && editdata.hobby.includes('cricket')) ? 'checked' : '' %>> cricket
+        <input type="checkbox" name="hobby" value="hoky" <%= (editdata && editdata.hobby.includes('hoky')) ? 'checked' : '' %>> hocky
+        <input type="checkbox" name="hobby" value="footbol" <%= (editdata && editdata.hobby.includes('footbol')) ? 'checked' : '' %>> footbol
+        <input type="checkbox" name="hobby" value="kabadi" <%= (editdata && editdata.hobby.includes('kabadi')) ? 'checked' : '' %>> kabadi
+        <input type="checkbox" name="hobby" value="kusti" <%= (editdata && editdata.hobby.includes('kusti')) ? 'checked' : '' %>> kusti
+        <input type="checkbox" name="hobby" value="driving" <%= (editdata && editdata.hobby.includes('driving')) ? 'checked' : '' %>> driving <br><br>
 
         <select id="dropdown1" name="city">
-            <option value="surat">surat</option>
-            <option value="ahemdabad">ahemdabad</option>
-            <option value="vadodra" >vadodra</option>
-            <option value="bhavnagar" >bhavnagar</option>
-            <option value="rajkot" >rajkot</option>
-            <option value="mumbai" >mumbai</option>
+            <option value="surat" <%= (editdata && editdata.city === 'surat') ? 'selected' : '' %>>surat</option>
+            <option value="ahemdabad" <%= (editdata && editdata.city === 'ahemdabad') ? 'selected' : '' %>>ahemdabad</option>
+            <option value="vadodra" <%= (editdata && editdata.city === 'vadodra') ? 'selected' : '' %>>vadodra</option>
+            <option value="bhavnagar" <%= (editdata && editdata.city === 'bhavnagar') ? 'selected' : '' %>>bhavnagar</option>
+            <option value="rajkot" <%= (editdata && editdata.city === 'rajkot') ? 'selected' : '' %>>rajkot</option>
+            <option value="mumbai" <%= (editdata && editdata.city === 'mumbai') ? 'selected' : '' %>>mumbai</option>
         </select>
 
         <button type="submit">submit</button>
     </form>
-
 
     <table border="1">
         <tr>
@@ -52,6 +51,8 @@
                 <td><%= item.gender %></td>
                 <td><%= item.hobby %></td>
                 <td><%=item.city%></td>
+               <td><button><a href="/deletedata?delet=<%= item._id %>">Delete</a></button></td> 
+                <td><button><a href="/updetedata?up=<%= item._id %>">updete</a></button> </td>
                
             </tr>
         <% }) %>
